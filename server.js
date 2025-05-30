@@ -343,6 +343,8 @@ Keep only the shoes that match that type
     if (!isNaN(minPrice)) { //Check if the user gave a real number for the minimum price. !isNaN(...) means “this is a real number.”
         shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice); //Remove shoes that are too cheap. 
         // Only keep shoes that cost more than or equal to the minPrice.
+        // if (!isNaN(minPrice)) means "if minPrice is a number"
+        //
     }
 
     if (!isNaN(maxPrice)) { //Check if the max price is a real number.
@@ -360,9 +362,43 @@ Keep only the shoes that match that type
     // This is what the user sees after their filters are applied.
 
     //Could also do a different version of res.send to make it more readable for the user, such as:
-    res.send("Here are the shoes you asked for:\n\n" + 
-        shoeFilter.map(shoe => `${shoe.name} — $${shoe.price} (${shoe.type})`).join('\n')
-);
+    res.send("Here are the shoes you asked for: <br><br>" + 
+        //res.send sends a message from your server back to the user’s browser
+        // This sends a message back to the browser. The message starts with a sentence.
+        // <br><br> makes two line breaks in the browser (like pressing Enter twice)
+        // &browser knows not to include the words br br but just perform the action
+
+        shoeFilter.map(shoe => `${shoe.name} — $${shoe.price} (${shoe.type})`).join('<br>'));
+        //EXPLANATION OF THE ABOVE LINE BROKEN DOWN BELOW:
+        // This whole line says: Go through every shoe in the list. And for each shoe name make a sentence like:
+        // "Air Jordans = $500 (sneaker)".
+        // To make each shoe appear on a new line in the browser, do this with the .join('<br>') - It adds an HTML line break between each shoe.
+        
+        //THIS LINE BROKEN DOWN FURTHER FOR EACH SPECIFIC SECTION:
+        //shoeFilter is the array list of filtered shoe objects. This is what we will be filtering through to find a shoe for the user.
+        //.map() is a method that loops through each item in the list. 
+        // shoe => is a tiny function that tells the code what to do for each shoe. It takes one shoe and builds a string using name, price, and type.
+        // `${shoe.name} — $${shoe.price} (${shoe.type})` -- this is a template literal to create what we will see on the browser with inserting in shoe name, etc.
+        // .join('<br>') combines shoe sentences into one long string (as long as they meet the query parameter) - Only includes shoes that match the query parameters (like type, min-price, etc.).
+
+    });
+
+    //CORRECT LOCAL HOST TO USE:
+    // http://localhost:3000/shoes?min-price=500&type=sneaker
+
+    // INITIALLY USED WRONG LOCALHOST INFO OF THIS....
+    // USING LOCAL HOST THIS LINK: http://localhost:3000/shoes?name=AirJordans&price=500&type=sneaker
+    /* BUT THIS LINK DOESN'T FULLY WORK BECAUSE:
+    You're right — that URL works in the sense that it doesn't crash. But here’s what’s actually happening:
+    Why it "works" — but doesn’t filter: Your route only looks for these query parameters: min-price, max-price,type
+    
+    But in your URL, you're using: 
+    name=AirJordans ✅ (not used in your code) 
+    price=500 ✅ (not used in your code)
+    type=sneaker ✅ this is the only one your code actually uses
+    So the code filters only by type=sneaker, and ignores the rest.
+
+    */
 
     //A third version of res.send: 
     // const shoeList = shoeFilter
