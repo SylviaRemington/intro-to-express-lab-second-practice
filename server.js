@@ -100,11 +100,55 @@ That’s the order. Math.floor is written first but runs last.
 
 */
 
+
+//--------------------------------------------------------------------------------------------------------------------------------
+//Exercise 3 - I Want THAT One!
+
+// This is the shop’s list of items
+const collectibles = [
+    { name: 'shiny ball', price: 5.95 }, // Item 0
+    { name: 'autographed picture of a dog', price: 10 }, // Item 1
+    { name: 'vintage 1970s yogurt (Are you sure you want this? May cause food poisoning.) SOLD AS-IS', price: 0.99 } // Item 2
+  ];
+
+app.get('/collectibles/:indexNumber', (req, res) => {
+    const indexNumber = req.params.indexNumber; //getting the indexNumber from the params url
+
+})
+
+
+
+/*
+Pseudocode for /collectibles/:indexNumber:
+
+1.Set up the route to match /collectibles/:indexNumber
+
+2.Get the index value from the URL
+
+3.Turn the index into a number (it comes in as a string)
+
+4.Check if the index is valid
+Is it a number?
+Is it within the range of the collectibles array?
+
+5.If the index is not valid:
+Respond with: "This item is not yet in stock. Check back soon!"
+
+6. If the index is valid:
+Get the item from the array using the index
+Use the item’s name and price to build a message like:
+"So, you want the [name]? For [price], it can be yours!"
+Send that message as the response
+
+*/
+
 //--------------------------------------------------------------------------------------------------------------------------------
 
-//EXERCISE 3
 
 
+
+
+//--------------------------------------------------------------------------------------------------------------------------------
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
