@@ -14,7 +14,7 @@ app.get('/greetings/:username', (req, res) => {
 
 //Exercise 2 - Rolling the Dice
 app.get('/roll/:dice-number-parameter', (req, res) => {
-    
+    const dice-number-parameter = req.params.dice-number-parameter;
 })
 
 app.listen(port, () => {
