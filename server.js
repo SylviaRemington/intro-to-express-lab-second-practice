@@ -7,10 +7,10 @@ const port = 3000;
 // })
 
 //Exercise 1 - Be Polite, Greet the User
-app.get('/greetings/:username', (req, res) => {
-    const username = req.params.username; //you have to have req.params.username anytime after using : to define the parameter
-    res.send(`Hello there, ${username}! What a delight to see you once more!`);
-});
+// app.get('/greetings/:username', (req, res) => {
+//     const username = req.params.username; //you have to have req.params.username anytime after using : to define the parameter
+//     res.send(`Hello there, ${username}! What a delight to see you once more!`);
+// });
 
 //Exercise 2 - Rolling the Dice
 app.get('/roll/:diceNumber', (req, res) => {
@@ -57,3 +57,32 @@ That’s the order. Math.floor is written first but runs last.
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+/*  CODE GRAVEYARD - OLDER TRIES AT CODE
+
+/Exercise 2 - Rolling the Dice - DOESN'T WORK
+app.get('/roll/:diceNumber', (req, res) => {
+    const diceNumber = req.params.diceNumber;
+    let validNumber = parseInt(diceNumber, 10);
+
+    if (diceNumber === validNumber) {
+        let randomNumber = Math.floor(Math.random() * (validNumber + 1)); 
+        res.send(`You have a valid number! And you rolled a ${randomNumber}`)
+    }else {
+        res.send('You must specify a number.');
+    }
+})
+
+
+*/
