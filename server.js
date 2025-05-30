@@ -354,6 +354,48 @@ Use parseFloat() for min-price and max-price. //best use scenario
 // });
 
 
+//YET ANOTHER VERSION: 
+// const shoes = [
+//   { name: "Birkenstocks", price: 50, type: "sandal" },
+//   { name: "Air Jordans", price: 500, type: "sneaker" },
+//   { name: "Air Mahomeses", price: 501, type: "sneaker" },
+//   { name: "Utility Boots", price: 20, type: "boot" },
+//   { name: "Velcro Sandals", price: 15, type: "sandal" },
+//   { name: "Jet Boots", price: 1000, type: "boot" },
+//   { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+// ];
+
+// app.get('/shoes', (req, res) => { // listens for people visiting /shoes
+
+//   let shoeFilter = [...shoes]; // make a copy of the shoe list so we don’t change the original
+
+//   const minPrice = parseInt(req.query['min-price'], 10); // turn the min-price string into a whole number
+//   const maxPrice = parseInt(req.query['max-price'], 10); // turn the max-price string into a whole number
+//   const type = req.query.type; // get the type from the URL if provided
+
+//   if (!isNaN(minPrice)) { // if min-price is a real number
+//     shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice);
+//   }
+
+//   if (!isNaN(maxPrice)) { // if max-price is a real number
+//     shoeFilter = shoeFilter.filter(shoe => shoe.price <= maxPrice);
+//   }
+
+//   if (type) { // if a type is provided
+//     shoeFilter = shoeFilter.filter(shoe => shoe.type === type);
+//   }
+
+//   res.send(shoeFilter); // send the final list of shoes back
+// });
+
+
+/*
+shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice); is the same as this below:
+
+shoeFilter = shoeFilter.filter(function(shoe) {
+  return shoe.price >= minPrice;
+});
+*/
 
 //--------------------------------------------------------------------------------------------------------------------------------
 app.listen(port, () => {
