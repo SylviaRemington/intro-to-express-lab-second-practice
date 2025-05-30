@@ -116,7 +116,7 @@ app.get('/collectibles/:indexNumber', (req, res) => { //setting up a route
     let validNumber = parseInt(indexNumber, 10) //parseInt stands for "parse integer" & means try to read this string as a whole number
     //converting the "string" from the url into a whole number
 
-    if(isNaN(validNumber) || validNumber < 0 || validNumber > 2 ) {
+    if(isNaN(validNumber) || validNumber < 0 || validNumber > collectibles.length -1 ) {
         res.send('This item is not yet in stock. Check back soon!');
     }else {
         const userItemSelected = collectibles[validNumber]; //getting the item the user selected from the array
