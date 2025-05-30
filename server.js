@@ -13,7 +13,9 @@ app.get('/greetings/:username', (req, res) => {
 });
 
 //Exercise 2 - Rolling the Dice
-
+app.get('/roll/:dice-number-parameter', (req, res) => {
+    
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
