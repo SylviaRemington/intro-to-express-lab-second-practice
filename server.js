@@ -223,22 +223,7 @@ Pseudocode for Exercise #3:
 //--------------------------------------------------------------------------------------------------------------------------------
 //Exercise 4 - Filter Shoes by Query Parameters
 //example: localhost:3000/hello?name=Christy&age=32
-
-  const shoes = [
-      { name: "Birkenstocks", price: 50, type: "sandal" },
-      { name: "Air Jordans", price: 500, type: "sneaker" },
-      { name: "Air Mahomeses", price: 501, type: "sneaker" },
-      { name: "Utility Boots", price: 20, type: "boot" },
-      { name: "Velcro Sandals", price: 15, type: "sandal" },
-      { name: "Jet Boots", price: 1000, type: "boot" },
-      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
-  ];
-
-  app.get('/shoes', (req, res) => {
-
-
-  })
-
+//Scroll down after notes and pseudocode, to see the code.
 
 /*
 Information about using Query Parameters in this lesson:
@@ -309,6 +294,7 @@ That’s it.
 /* PSEUDOCODE FOR EXERCISE 4
 
 ✅ Pseudocode for /shoes route with query filters
+
 1. Set up a route that listens for requests to /shoes
 
 2. Look at the URL and get any query filters the user included:
@@ -328,8 +314,44 @@ Remove any shoes that cost more than that number
 Keep only the shoes that match that type
 
 7. Send back the list of shoes that passed all the filters
+*/
+
+  const shoes = [
+      { name: "Birkenstocks", price: 50, type: "sandal" },
+      { name: "Air Jordans", price: 500, type: "sneaker" },
+      { name: "Air Mahomeses", price: 501, type: "sneaker" },
+      { name: "Utility Boots", price: 20, type: "boot" },
+      { name: "Velcro Sandals", price: 15, type: "sandal" },
+      { name: "Jet Boots", price: 1000, type: "boot" },
+      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+  ];
+
+  app.get('/shoes', (req, res) => { //set up a route that listens for requests to /shoes
+    let shoeFilter = shoes; //gives the list a name that fits its role / gives same array a new name to make code easier to follow
+    //better to create a new array so don't mess up old data like const shoeFilter = [...shoes], but can do let above too
+    const minPrice = Number(req.query["min-price"]);
+    const maxPrice = Number(req.query["max-price"]);
+    const type = req.query.type;
+
+    if (!isNaN(minPrice)) {
+        shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice);
+    }
+
+    if (!isNaN(maxPrice)) {
+        shoeFilter = shoeFilter.filter(shoe => shoe.price <= maxPrice);
+    }
+
+    if (type) {
+        shoeFilter = shoeFilter.filter(shoe => shoe.type === type);
+    }
+
+    res.send(shoeFilter);
+
+  });
 
 
+
+/*
 --------
 AND HERE ARE SOME METHODS I MIGHT USE:
 ✅ 1. req.query
