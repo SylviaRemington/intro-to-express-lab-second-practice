@@ -242,9 +242,44 @@ app.get('/hello', (req, res) => {
 });
 */
 
+  const shoes = [
+      { name: "Birkenstocks", price: 50, type: "sandal" },
+      { name: "Air Jordans", price: 500, type: "sneaker" },
+      { name: "Air Mahomeses", price: 501, type: "sneaker" },
+      { name: "Utility Boots", price: 20, type: "boot" },
+      { name: "Velcro Sandals", price: 15, type: "sandal" },
+      { name: "Jet Boots", price: 1000, type: "boot" },
+      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+  ];
 
+  app.req('shoes', (req, res){
 
+  })
 
+/* PSEUDOCODE FOR EXERCISE 4
+
+✅ Pseudocode for /shoes route with query filters
+1. Set up a route that listens for requests to /shoes
+
+2. Look at the URL and get any query filters the user included:
+One for minimum price
+One for maximum price
+One for type of shoe
+
+3. Start with the full shoe list
+
+4. If there is a minimum price:
+Remove any shoes that cost less than that number
+
+5. If there is a maximum price:
+Remove any shoes that cost more than that number
+
+6. If there is a type:
+Keep only the shoes that match that type
+
+7. Send back the list of shoes that passed all the filters
+
+*/
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
