@@ -329,9 +329,16 @@ Keep only the shoes that match that type
   app.get('/shoes', (req, res) => { //set up a route that listens for requests to /shoes
     let shoeFilter = shoes; //gives the list a name that fits its role / gives same array a new name to make code easier to follow
     //better to create a new array so don't mess up old data like const shoeFilter = [...shoes], but can do let above too
-    const minPrice = Number(req.query["min-price"]);
-    const maxPrice = Number(req.query["max-price"]);
-    const type = req.query.type;
+    //We're starting with all the shoes. This list will shrink if the user adds filters.
+
+    const minPrice = Number(req.query["min-price"]); //getting the minimum price filter from the URL, 
+    // if the user typed one — like ?min-price=100. We change it from a string to a number using Number().
+
+    const maxPrice = Number(req.query["max-price"]); //getting the maximum price filter from the URL — like ?max-price=500.
+    // Again, we convert it from a string to a number with the Number() method. Could also use pareInt or parseFloat.
+
+    const type = req.query.type; //getting the shoe type from the URL - ike ?type=boot or ?type=sneaker.
+    //No number conversion is needed here because it's a word.
 
     if (!isNaN(minPrice)) {
         shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice);
