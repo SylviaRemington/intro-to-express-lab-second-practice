@@ -192,7 +192,6 @@ Pseudocode for Exercise #3:
 //   });
 
 
-
   //Another alt version with notes:
   // Exercise #3 - works!
 // This is the shop’s list of items
@@ -220,9 +219,26 @@ Pseudocode for Exercise #3:
 //   });
 
 
+
 //--------------------------------------------------------------------------------------------------------------------------------
 //Exercise 4 - Filter Shoes by Query Parameters
 //example: localhost:3000/hello?name=Christy&age=32
+
+  const shoes = [
+      { name: "Birkenstocks", price: 50, type: "sandal" },
+      { name: "Air Jordans", price: 500, type: "sneaker" },
+      { name: "Air Mahomeses", price: 501, type: "sneaker" },
+      { name: "Utility Boots", price: 20, type: "boot" },
+      { name: "Velcro Sandals", price: 15, type: "sandal" },
+      { name: "Jet Boots", price: 1000, type: "boot" },
+      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+  ];
+
+  app.get('/shoes', (req, res) => {
+
+
+  })
+
 
 /*
 Information about using Query Parameters in this lesson:
@@ -242,20 +258,51 @@ app.get('/hello', (req, res) => {
 });
 */
 
-  const shoes = [
-      { name: "Birkenstocks", price: 50, type: "sandal" },
-      { name: "Air Jordans", price: 500, type: "sneaker" },
-      { name: "Air Mahomeses", price: 501, type: "sneaker" },
-      { name: "Utility Boots", price: 20, type: "boot" },
-      { name: "Velcro Sandals", price: 15, type: "sandal" },
-      { name: "Jet Boots", price: 1000, type: "boot" },
-      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
-  ];
+/* ASSIGNMENT FOR EXERCISE #4:
+Use the following array of shoes in this challenge.
 
-  app.get('/shoes', (req, res) => {
+Task: Create a route /shoes that filters the list of shoes based on query parameters.
 
+Query Parameters:
+min-price: Excludes shoes below this price.
+max-price: Excludes shoes above this price.
+type: Shows only shoes of the specified type.
+No parameters: Responds with the full list of shoes.
+*/
 
-  })
+/* BASIC OVERVIEW
+💬 What are you trying to build?
+You are building a menu of shoes.
+
+People can visit your page and say:
+“Only show me boots.”
+“Only show me shoes that cost more than $100.”
+“Only show me sandals that cost less than $50.”
+
+🧠 But how do they “say” that?
+They don’t say it out loud. They type it in the web address.
+
+Like this:
+/shoes?min-price=100&type=boot
+That just means:
+“Show me boots that cost at least $100.”
+
+❓So why do you need code?
+Because your page doesn’t know what to show until you teach it.
+
+You write code that says:
+“If someone asks for boots, I’ll only show boots.”
+“If someone asks for shoes under $50, I’ll hide the expensive ones.”
+
+📦 You already have a list of shoes.
+Now you are just saying:
+
+“Look at what the person typed in the web address.”
+“Use that info to decide what shoes to show.”
+That’s it.
+
+*/
+
 
 //ALSO THIS MEANS: (!isNaN(value) // means: it *is* a number)
 
@@ -281,6 +328,7 @@ Remove any shoes that cost more than that number
 Keep only the shoes that match that type
 
 7. Send back the list of shoes that passed all the filters
+
 
 --------
 AND HERE ARE SOME METHODS I MIGHT USE:
