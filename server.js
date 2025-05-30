@@ -116,7 +116,7 @@ app.get('/collectibles/:indexNumber', (req, res) => { //setting up a route
     let validNumber = parseInt(indexNumber, 10) //parseInt stands for "parse integer" & means try to read this string as a whole number
     //converting the "string" from the url into a whole number
 
-    if(isNaN(indexNumber) || indexNumber < 0 || indexNumber > 2 ) {
+    if(isNaN(validNumber) || validNumber < 0 || validNumber > 2 ) {
         res.send('This item is not yet in stock. Check back soon!');
     }else {
         const userItemSelected = collectibles[indexNumber]; //getting the item the user selected from the array
@@ -146,6 +146,30 @@ Use the item’s name and price to build a message like:
 "So, you want the [name]? For [price], it can be yours!"
 Send that message as the response
 
+*/
+
+/*
+REWRITTEN PSEUDOCODE FOR EXERCISE 3 THAT WORKS BETTER - ESPECIALLY #4
+Pseudocode for Exercise #3:
+
+1. Set up a route that matches /collectibles/:indexNumber
+
+2. Get the index value from the URL parameters
+
+3. Convert the index value into a number
+
+4. Validate the number:
+   - Check if it's not a number (use isNaN)
+   - Check if it's less than 0
+   - Check if it's greater than the last index in the array
+
+5. If the number is invalid:
+   - Send the message: "This item is not yet in stock. Check back soon!"
+
+6. If the number is valid:
+   - Use it to get the correct item from the collectibles array
+   - Create a message using the item's name and price
+   - Send the message as the response
 */
 
 //--------------------------------------------------------------------------------------------------------------------------------
