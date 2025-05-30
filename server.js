@@ -252,10 +252,12 @@ app.get('/hello', (req, res) => {
       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
   ];
 
-  app.req('shoes', (req, res) => {
-    
+  app.get('/shoes', (req, res) => {
+
 
   })
+
+//ALSO THIS MEANS: (!isNaN(value) // means: it *is* a number)
 
 /* PSEUDOCODE FOR EXERCISE 4
 
@@ -280,7 +282,77 @@ Keep only the shoes that match that type
 
 7. Send back the list of shoes that passed all the filters
 
+--------
+AND HERE ARE SOME METHODS I MIGHT USE:
+✅ 1. req.query
+To get the query parameters from the URL
+Example: req.query["min-price"], req.query.type
+
+✅ 2. Array.prototype.filter()
+To create a new list of shoes that match your criteria
+You'll apply this method multiple times, once for each condition (min price, max price, type)
+
+✅ 3. Number(), parseInt(), or parseFloat()
+To convert min-price and max-price from strings to numbers
+
+Use parseFloat() when the value may include cents (like 5.95)
+
+Use parseInt() if you're only working with whole numbers
+
+Number() also works and auto-detects format but may return NaN on bad input
+
+✅ 4. res.send()
+To send the final filtered list back to the user
+
+SO YOU WOULD ONLY USE ONE OF THESE THREE? Number(), parseInt(), or parseFloat()
+
+ChatGPT said:
+Yes. ✅ You would only use one of these three — not all at once.
+
+Which one you choose depends on what kind of number you expect:
+
+🔹 Use parseFloat()
+✅ Best choice for prices (like 5.95, 100.25)
+Keeps decimals
+Recommended for this shoe exercise
+
+🔹 Use parseInt()
+✅ Use only if you need whole numbers only
+Cuts off anything after the decimal
+Not recommended for prices
+
+🔹 Use Number()
+✅ Also converts strings to numbers (decimals or whole)
+More strict — returns NaN on invalid input
+Flexible, but less clear than parseFloat() for price-specific use
+
+✅ For this assignment:
+Use parseFloat() for min-price and max-price. //best use scenario
 */
+
+//ANOTHER VERSION:
+// app.get('/shoes', (req, res) => {
+//   let filteredShoes = shoes;
+
+//   const minPrice = parseFloat(req.query["min-price"]);
+//   const maxPrice = parseFloat(req.query["max-price"]);
+//   const type = req.query.type;
+
+//   if (!isNaN(minPrice)) {
+//     filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice);
+//   }
+
+//   if (!isNaN(maxPrice)) {
+//     filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice);
+//   }
+
+//   if (type) {
+//     filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+//   }
+
+//   res.send(filteredShoes);
+// });
+
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
