@@ -222,6 +222,25 @@ Pseudocode for Exercise #3:
 
 //--------------------------------------------------------------------------------------------------------------------------------
 //Exercise 4 - Filter Shoes by Query Parameters
+//example: localhost:3000/hello?name=Christy&age=32
+
+/*
+Information about using Query Parameters in this lesson:
+Using Query Parameters
+In this section, you practice using query parameters to pass information from the URL to the server 
+in an Express application. Query parameters are added to the end of a URL after a ? and are formatted 
+as key=value pairs. Multiple query parameters can be added to a URL by separating them with &. 
+For example, the following URL has two query parameters, name and age:
+
+localhost:3000/hello?name=Christy&age=32
+
+Query parameters are available in the server’s req.query object. 
+We can access the values of the name and age query parameters like so:
+
+app.get('/hello', (req, res) => {
+    res.send(`Hello there, ${req.query.name}! I hear you are ${req.query.age} years old!`);
+});
+*/
 
 
 
