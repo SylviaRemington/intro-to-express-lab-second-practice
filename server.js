@@ -355,10 +355,20 @@ Keep only the shoes that match that type
         //Only keep shoes that match the type the user asked for.
     }
 
-    res.send(shoeFilter); //Send the final list of shoes back to the user (on the webpage or in JSON).
+    //One version of res.send
+    // res.send(shoeFilter); //Send the final list of shoes back to the user (on the webpage or in JSON).
     // This is what the user sees after their filters are applied.
 
-  });
+    //Could also do a different version of res.send to make it more readable for the user, such as:
+    res.send("Here are the shoes you asked for:\n\n" + 
+        shoeFilter.map(shoe => `${shoe.name} — $${shoe.price} (${shoe.type})`).join('\n')
+);
+
+    //A third version of res.send: 
+    // const shoeList = shoeFilter
+    //    .map(shoe => `${shoe.name} — $${shoe.price} (${shoe.type})`)
+    //    .join('<br>'); // HTML line breaks
+    // res.send("Here are the shoes you asked for:<br><br>" + shoeList);});
 
 /*Also, some addtl notes:
 1. Why use ["min-price"] instead of camelCase like .minPrice?
