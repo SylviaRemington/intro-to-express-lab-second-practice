@@ -111,24 +111,21 @@ const collectibles = [
     { name: 'vintage 1970s yogurt (Are you sure you want this? May cause food poisoning.) SOLD AS-IS', price: 0.99 } // Item 2
   ];
 
-app.get('/collectibles/:indexNumber', (req, res) => {
+app.get('/collectibles/:indexNumber', (req, res) => { //setting up a route
     const indexNumber = req.params.indexNumber; //getting the indexNumber from the params url
     let validNumber = parseInt(indexNumber, 10) //parseInt stands for "parse integer" & means try to read this string as a whole number
     //converting the "string" from the url into a whole number
 
-    if(isNaN(indexNumber)) {
+    if(isNaN(indexNumber) || indexNumber < 0 || indexNumber > 2 ) {
         res.send('This item is not yet in stock. Check back soon!');
     }else {
-        
+        const userItemSelected = collectibles[indexNumber]; //getting the item the user selected from the array
+        res.send(`You'd like the ${userItemSelected.name}? You can purchase it for $${userItemSelected.price}`);//sending msg back to user as response
     }
-
-
-})
-
-
+});
 
 /*
-Pseudocode for /collectibles/:indexNumber:
+Pseudocode for Exercise #3 above:
 
 1.Set up the route to match /collectibles/:indexNumber
 
