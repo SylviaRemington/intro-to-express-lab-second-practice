@@ -360,7 +360,21 @@ Keep only the shoes that match that type
 
   });
 
+/*Also, some addtl notes:
+1. Why use ["min-price"] instead of camelCase like .minPrice?
 
+Because:
+The query parameter in the URL is written as ?min-price=100
+JavaScript object keys with hyphens must be accessed using bracket notation, not dot notation.
+
+
+2. Why use multiple if statements instead of if...else if...else?
+
+Because:
+The user might give none, one, two, or all three query parameters.
+Each if block checks separately and runs only if that specific input exists.
+Using else if would stop after the first match — which is not what you want here.
+*/
 
 /*
 --------
