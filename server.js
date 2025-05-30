@@ -340,19 +340,23 @@ Keep only the shoes that match that type
     const type = req.query.type; //getting the shoe type from the URL - ike ?type=boot or ?type=sneaker.
     //No number conversion is needed here because it's a word.
 
-    if (!isNaN(minPrice)) {
-        shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice);
+    if (!isNaN(minPrice)) { //Check if the user gave a real number for the minimum price. !isNaN(...) means “this is a real number.”
+        shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice); //Remove shoes that are too cheap. 
+        // Only keep shoes that cost more than or equal to the minPrice.
     }
 
-    if (!isNaN(maxPrice)) {
-        shoeFilter = shoeFilter.filter(shoe => shoe.price <= maxPrice);
+    if (!isNaN(maxPrice)) { //Check if the max price is a real number.
+        shoeFilter = shoeFilter.filter(shoe => shoe.price <= maxPrice); //Remove shoes that are too expensive.
+        // Only keep shoes that cost less than or equal to the maxPrice.
     }
 
-    if (type) {
-        shoeFilter = shoeFilter.filter(shoe => shoe.type === type);
+    if (type) { //Check if the user typed in a type of shoe, like "boot".
+        shoeFilter = shoeFilter.filter(shoe => shoe.type === type); 
+        //Only keep shoes that match the type the user asked for.
     }
 
-    res.send(shoeFilter);
+    res.send(shoeFilter); //Send the final list of shoes back to the user (on the webpage or in JSON).
+    // This is what the user sees after their filters are applied.
 
   });
 
