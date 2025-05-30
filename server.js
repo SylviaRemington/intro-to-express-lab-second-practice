@@ -11,11 +11,11 @@ const port = 3000;
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
-//Exercise 1 - Be Polite, Greet the User
-// app.get('/greetings/:username', (req, res) => {
-//     const username = req.params.username; //you have to have req.params.username anytime after using : to define the parameter
-//     res.send(`Hello there, ${username}! What a delight to see you once more!`);
-// });
+// Exercise 1 - Be Polite, Greet the User
+app.get('/greetings/:username', (req, res) => {
+    const username = req.params.username; //you have to have req.params.username anytime after using : to define the parameter
+    res.send(`Hello there, ${username}! What a delight to see you once more!`);
+});
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
