@@ -113,6 +113,15 @@ const collectibles = [
 
 app.get('/collectibles/:indexNumber', (req, res) => {
     const indexNumber = req.params.indexNumber; //getting the indexNumber from the params url
+    let validNumber = parseInt(indexNumber, 10) //parseInt stands for "parse integer" & means try to read this string as a whole number
+    //converting the "string" from the url into a whole number
+
+    if(isNaN(indexNumber)) {
+        res.send('This item is not yet in stock. Check back soon!');
+    }else {
+        
+    }
+
 
 })
 
