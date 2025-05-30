@@ -119,7 +119,7 @@ app.get('/collectibles/:indexNumber', (req, res) => { //setting up a route
     if(isNaN(validNumber) || validNumber < 0 || validNumber > 2 ) {
         res.send('This item is not yet in stock. Check back soon!');
     }else {
-        const userItemSelected = collectibles[indexNumber]; //getting the item the user selected from the array
+        const userItemSelected = collectibles[validNumber]; //getting the item the user selected from the array
         res.send(`You'd like the ${userItemSelected.name}? You can purchase it for $${userItemSelected.price}`);//sending msg back to user as response
     }
 });
@@ -171,6 +171,32 @@ Pseudocode for Exercise #3:
    - Create a message using the item's name and price
    - Send the message as the response
 */
+
+//ANOTHER ALTERNATE VERSION I DID DURING THE FIRST TIME DOING THIS THAT'S CLEANER:
+// Exercise #3 - works!
+// This is the shop’s list of items
+const collectibles = [
+    { name: 'shiny ball', price: 5.95 }, // Item 0
+    { name: 'autographed picture of a dog', price: 10 }, // Item 1
+    { name: 'vintage 1970s yogurt (Are you sure you want this? May cause food poisoning.) SOLD AS-IS', price: 0.99 } // Item 2
+  ];
+  
+  // When someone visits a web address like yourshop.com/collectibles/0 or http://localhost:3000/collectibles/2
+  app.get('/collectibles/:index', (req, res) => {
+    // Grab the number from the web address (like "0" or "2")
+    const index = parseInt(req.params.index, 10);
+    
+    // Check if the number works (Checking if it's not 0, 1, or 2, or not a number at all)
+    if (isNaN(index) || index < 0 || index > 2) {
+      // Tell them we don’t have that item
+      res.send('This item is not yet in stock. Check back soon!');
+    } else {
+      // Pick the item from the list using the number
+      const item = collectibles[index];
+      // Show them the item’s name and price
+      res.send(`You'd like the ${item.name}? You can purchase it for $${item.price}.`);
+    }
+  });
 
 //--------------------------------------------------------------------------------------------------------------------------------
 
