@@ -342,8 +342,10 @@ Keep only the shoes that match that type
 
     if (!isNaN(minPrice)) { //Check if the user gave a real number for the minimum price. !isNaN(...) means “this is a real number.”
         shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice); //Remove shoes that are too cheap. 
-        // Only keep shoes that cost more than or equal to the minPrice.
-        // if (!isNaN(minPrice)) means "if minPrice is a number"
+        // EXPLANATION OF THIS ABOVE LINE OF CODE BELOW:
+        // OVERVIEW: Only keep shoes that cost more than or equal to the minPrice.
+        // CODE BREAKDOWN OF EACH PART BELOW HERE:
+        // if (!isNaN(minPrice)) means "if minPrice is a number" - ! with isNaN means "not a not a number", which means it is a number. There is no other verbiage in code that just says something is a number.
         //
     }
 
