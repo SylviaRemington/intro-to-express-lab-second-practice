@@ -252,7 +252,8 @@ app.get('/hello', (req, res) => {
       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
   ];
 
-  app.req('shoes', (req, res){
+  app.req('shoes', (req, res) => {
+    
 
   })
 
