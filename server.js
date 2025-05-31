@@ -285,11 +285,12 @@ Now you are just saying:
 “Look at what the person typed in the web address.”
 “Use that info to decide what shoes to show.”
 That’s it.
-
 */
 
-
 //ALSO THIS MEANS: (!isNaN(value) // means: it *is* a number)
+
+
+
 
 /* PSEUDOCODE FOR EXERCISE 4
 
