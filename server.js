@@ -335,9 +335,14 @@ Keep only the shoes that match that type
     // if the user typed one — like ?min-price=100. We change it from a string to a number using Number().
 
     /*Here’s a simple breakdown of each part:
+    With Example URL: /shoes?min-price=100
 
     const minPrice = ...
     ➡️ We’re creating a new variable called minPrice.
+
+    Number(...)
+    ➡️ Converts the string "100" into a real number: 100.
+    So we can do math with it (like comparing prices).
 
     req.query
     ➡️ This gets all the query parameters from the URL.
@@ -348,10 +353,6 @@ Keep only the shoes that match that type
     req.query["min-price"]
     ➡️ This grabs the value from the URL's min-price query.
     In the example above, it grabs 100 (as a string).
-
-    Number(...)
-    ➡️ Converts the string "100" into a real number: 100.
-    So we can do math with it (like comparing prices).
 
     All together:
     🟢 “Get the value of min-price from the URL, turn it into a number, and save it as minPrice.”
