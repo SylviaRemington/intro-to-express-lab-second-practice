@@ -346,7 +346,17 @@ Keep only the shoes that match that type
         // OVERVIEW: Only keep shoes that cost more than or equal to the minPrice.
         // CODE BREAKDOWN OF EACH PART BELOW HERE:
         // if (!isNaN(minPrice)) means "if minPrice is a number" - ! with isNaN means "not a not a number", which means it is a number. There is no other verbiage in code that just says something is a number.
-        //
+        // shoeFilter - This is the current list of shoes we're working with. We're updating the shoe filter list with what happens when it is the min price.
+        // shoeFilter.filter - Going through each item in the shoeFilter list. Only keeping the ones that match this rule. This creates a shorter list.
+        // shoe => This is a tiny function used inside .filter() - It runs one time for each shoe. (shoe = one shoe at a time)
+        // shoe.price >= minPrice // meaning below
+        // shoe.price >= minPrice
+        // shoe.price = the price of this one shoe
+        // minPrice = the number the user typed in the URL
+        // Keep the shoe only if the price is greater than or equal to minPrice 
+        // Full meaning:“Look at each shoe. If the price is big enough and greater than the minimum, keep it. 
+        // Then update shoeFilter with only the shoes that passed.” 
+        // “Go through the current shoe list. Only keep shoes that are at least the minimum price.
     }
 
     if (!isNaN(maxPrice)) { //Check if the max price is a real number.
@@ -384,6 +394,41 @@ Keep only the shoes that match that type
         // .join('<br>') combines shoe sentences into one long string (as long as they meet the query parameter) - Only includes shoes that match the query parameters (like type, min-price, etc.).
 
     });
+
+/*
+    This is how the code looks without all the notes:
+    const shoes = [
+  { name: "Birkenstocks", price: 50, type: "sandal" },
+  { name: "Air Jordans", price: 500, type: "sneaker" },
+  { name: "Air Mahomeses", price: 501, type: "sneaker" },
+  { name: "Utility Boots", price: 20, type: "boot" },
+  { name: "Velcro Sandals", price: 15, type: "sandal" },
+  { name: "Jet Boots", price: 1000, type: "boot" },
+  { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+];
+
+app.get('/shoes', (req, res) => {
+  let shoeFilter = shoes;
+  const minPrice = Number(req.query["min-price"]);
+  const maxPrice = Number(req.query["max-price"]);
+  const type = req.query.type;
+
+  if (!isNaN(minPrice)) {
+    shoeFilter = shoeFilter.filter(shoe => shoe.price >= minPrice);
+  }
+
+  if (!isNaN(maxPrice)) {
+    shoeFilter = shoeFilter.filter(shoe => shoe.price <= maxPrice);
+  }
+
+  if (type) {
+    shoeFilter = shoeFilter.filter(shoe => shoe.type === type);
+  }
+
+  res.send("Here are the shoes you asked for: <br><br>" + 
+    shoeFilter.map(shoe => `${shoe.name} — $${shoe.price} (${shoe.type})`).join('<br>'));
+});
+*/
 
     //CORRECT LOCAL HOST TO USE:
     // http://localhost:3000/shoes?min-price=500&type=sneaker
