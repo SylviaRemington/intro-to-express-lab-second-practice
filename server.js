@@ -457,6 +457,11 @@ app.get('/shoes', (req, res) => {
     //CORRECT LOCAL HOST TO USE:
     // http://localhost:3000/shoes?min-price=500&type=sneaker
 
+    //ANOTHER CORRECT LOCAL HOST COULD USE TO AQUIRE SHOE INFO:
+    //http://localhost:3000/shoes?min-price=999
+    // RESULT: 
+    // Here are the shoes you asked for: Jet Boots — $1000 (boot)
+
     // INITIALLY USED WRONG LOCALHOST INFO OF THIS....
     // USING LOCAL HOST THIS LINK: http://localhost:3000/shoes?name=AirJordans&price=500&type=sneaker
     /* BUT THIS LINK DOESN'T FULLY WORK BECAUSE:
