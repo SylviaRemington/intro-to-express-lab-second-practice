@@ -1,3 +1,5 @@
+// INTRO TO EXPRESS LAB - SECOND PRACTICE (First version can be found at "intro-to-express-lab")
+
 const express = require('express');
 const app = express();
 const port = 3000;
